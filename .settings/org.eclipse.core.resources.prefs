@@ -1,8 +1,15 @@
 eclipse.preferences.version=1
+encoding//.link_to_grails_plugins/angularjs-resources-1.0.1/grails-app/i18n=UTF-8
+encoding//.link_to_grails_plugins/angularjs-resources-1.0.1/grails-app/i18n/messages.properties=UTF-8
+encoding//.link_to_grails_plugins/build-test-data-2.0.2/grails-app/i18n=UTF-8
+encoding//.link_to_grails_plugins/build-test-data-2.0.2/grails-app/i18n/messages.properties=UTF-8
+encoding//.link_to_grails_plugins/cache-headers-1.1.5/grails-app/i18n=UTF-8
+encoding//.link_to_grails_plugins/cache-headers-1.1.5/grails-app/i18n/messages.properties=UTF-8
 encoding//.link_to_grails_plugins/jquery-1.7.1/grails-app/i18n=UTF-8
 encoding//.link_to_grails_plugins/jquery-1.7.1/grails-app/i18n/messages.properties=UTF-8
 encoding//.link_to_grails_plugins/resources-1.1.6/grails-app/i18n=UTF-8
 encoding//.link_to_grails_plugins/resources-1.1.6/grails-app/i18n/messages.properties=UTF-8
+encoding//grails-app/conf/BuildConfig.groovy=UTF-8
 encoding//grails-app/i18n=UTF-8
 encoding//grails-app/i18n/messages.properties=UTF-8
 encoding//grails-app/i18n/messages_cs_CZ.properties=UTF-8

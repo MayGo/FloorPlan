@@ -1,0 +1,35 @@
+
+<div class="page-header">
+	<h1>Create Room</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<form name="form" data-ng-submit="save(item)" class="form-horizontal">
+
+	<div class="control-group" data-ng-class="{error: errors.nr}">
+		<label class="control-label" for="nr">Nr</label>
+		<div class="controls">
+			<input type="text" id="nr" name="nr" required data-ng-model="item.nr">
+			<span class="help-inline" data-ng-show="errors.nr">{{errors.nr}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.floor}">
+		<label class="control-label" for="floor">Floor</label>
+		<div class="controls">
+			<input type="text" id="floor" name="floor" required data-ng-model="item.floor">
+			<span class="help-inline" data-ng-show="errors.floor">{{errors.floor}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.shop}">
+		<label class="control-label" for="shop">Shop</label>
+		<div class="controls">
+			<input type="text" id="shop" name="shop" required data-ng-model="item.shop">
+			<span class="help-inline" data-ng-show="errors.shop">{{errors.shop}}</span>
+		</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Create</button>
+	</div>
+</form>
