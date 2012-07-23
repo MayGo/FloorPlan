@@ -12,14 +12,18 @@
 			// $(this).bind("click", methods.myOtherFunction);
 			this.svg();
 
+			
+
 		},
 		colorRooms : function(rooms) {
 			var $this = $(this);
 
 			console.log("colorRooms:" + rooms);
 			$.each(rooms, function(index, value) {
-				console.log("colorRooms-color room:" + "#"+$this.data("settings").roomPrefix+value);
-				methods.colorRoom($this,$("#"+$this.data("settings").roomPrefix+value))
+				console.log("colorRooms-color room:" + "#"
+						+ $this.data("settings").roomPrefix + value);
+				methods.colorRoom($this, $("#"
+						+ $this.data("settings").roomPrefix + value))
 			});
 		},
 		colorRoom : function($this, room) {
@@ -28,12 +32,10 @@
 					.data("settings").activeRoom;
 			var activeRoom = $this.data("settings").activeRoom = room;
 
-
-			
 			if (findShapeType(activeRoom))
 				findShapeType(activeRoom).addClass("activeRoom");
 		},
-		deColorRooms: function() {
+		deColorRooms : function() {
 			$("g *").removeClass("activeRoom");
 		},
 		// myOtherFunction : function() {
@@ -57,10 +59,17 @@
 					// console.log($(val).offset());
 
 					$('.p_' + val.id).click(function() {
-
 						$($(this).attr("parentId")).trigger("click");
 					});
-				})
+
+				});
+				$("#ruuminr g").hover(function() {
+					//$(this).children(":first-child").addClass("shadow_1");
+					$(this).attr('filter', 'url(#myGlowFilter)');
+				}, function() {
+					//$(this).children(":first-child").removeClass("shadow_1");
+					$(this).attr('filter', '');
+				});
 				$("#ruuminr g").click(function() {
 					console.log("Ruumi nr" + this.id);
 					methods.deColorRooms()

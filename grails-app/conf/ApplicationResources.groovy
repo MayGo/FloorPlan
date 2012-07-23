@@ -35,7 +35,9 @@ modules = {
 
 		resource url:'/js/jquery.svg.min.js'
 		resource url:'/js/jquery.svganim.min.js'
+		
 		resource url:'/js/jquery.svgdom.min.js'
+		resource url:'/js/jquery.svgfilter.min.js'
 	}
 
 	map {

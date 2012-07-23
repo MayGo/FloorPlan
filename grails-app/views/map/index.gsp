@@ -23,14 +23,47 @@
 
 			
 			$(function() {
-				var mapSvg = "${resource(dir: 'maps', file:'1_korrus_2.svg')}";
-				console.log(mapSvg);
+				function parseSVG(s) {
+			        var div= document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
+			        div.innerHTML= '<svg xmlns="http://www.w3.org/2000/svg">'+s+'</svg>';
+			        var frag= document.createDocumentFragment();
+			        while (div.firstChild.firstChild)
+			            frag.appendChild(div.firstChild.firstChild);
+			        return frag;
+			    }
 
-				$('#floors').Floor({});
-				$('#floors').Floor("load", mapSvg);
+				
+				var mapSvg1 = "${resource(dir: 'maps', file:'1_korrus_1.svg')}";
+				var mapSvg2 = "${resource(dir: 'maps', file:'1_korrus_2.svg')}";
+				console.log(mapSvg1);
+
+				$('#floor1').Floor({});
+				var svg = $('#floor1').svg('get');
+
+				var defs = svg.defs();
+				var filter = svg.filter(defs, "myGaussianBlur", null, null, null, null, {
+				//	filterUnits : "userSpaceOnUse"
+				});
+				svg.filters.gaussianBlur(filter,null, "SourceAlpha",  4);
+				//svg.filters.offset(filter, "offsetBlur", "blur", 4, 4);
+				$(parseSVG('<filter id="myGlowFilter"><feGaussianBlur stdDeviation="6" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>')).appendTo(svg.defs());
+				
+				$('#floor1').Floor("load", mapSvg1);
+				$('#floor2').Floor({});
+				$('#floor2').Floor("load", mapSvg2);
+				
+				var FLOOR_BETWEEN=70;
+				$(".floor").each(function(index) {
+					$(this).offset({top:$(this).offset().top+FLOOR_BETWEEN * index});
+					var zIndex=$(this).css('z-index');
+					$(this).css('z-index', zIndex-index)
+				});
 			});
 		</script>
-		<div id="floors"></div>
+		<div id="floors">
+		<div id="floor1" class="floor"></div>
+		<div id="floor2" class="floor" ></div>
+		</div>
 	</div>
 </body>
 </html>

@@ -1,36 +1,54 @@
-.activeRoom{
-	fill:#EF1D25;
+.activeRoom {
+	fill: #EF1D25;
 }
 
-.map_full{
-
-	left:0px;
-	margin-top:30px;
-	
+.map_full {
+	left: 0px;
+	margin-top: 30px;
 	box-shadow: 0 0 0.3em #255B17;
 }
 
 #floors {
-	clear:both;
-	position:relative;
-
+	clear: both;
+	position: relative;
 }
 
 #floors span {
-
 	position: absolute;
-
 }
-#floors svg{
 
-}
-#content{
-	/*  position: absolute;*/
+#floors svg {
 	
 }
 
-.customBadge{
-	font-size:9px;
-padding: 1px 4px 2px;
+.floor {
+	z-index:1;
+	border: 1px solid #FFF;
+	border-bottom: 4px solid #FFF;
+	border-top: 4px solid #FFF;
+	background: #000;
+	position: absolute;
+	
+	transform : skew( 50deg, 0deg) scale( 1, 0.1);
+	-ms-transform: skew(50deg, 0deg) scale(1, 0.1); /* IE 9 */
+	-webkit-transform: skew(50deg, 0deg) scale(1, 0.1);
+	/* Safari and Chrome */
+	-o-transform: skew(50deg, 0deg) scale(1, 0.1); /* Opera */
+	-moz-transform: skew(50deg, 0deg) scale(1, 0.1);
+	transform: skew(50deg, 0deg) scale(1, 0.1);
+
+}
+
+.shadow_1 {
+filter:url(#myGaussianBlur); 
+}
+
+#content { /*  position: absolute;*/
+	
+}
+
+.customBadge {
+	font-size: 9px;
+	padding: 1px 4px 2px;
 	vertical-align: top;
 }
