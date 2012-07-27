@@ -42,10 +42,10 @@
 					opacity: 1
 				},
 				initOpacity: 1,
-				imgPath: 'images/',
+				imgPath: '/FloorPlan/static/js/svg-edit/images/',
 				langPath: 'locale/',
-				extPath: 'extensions/',
-				extensions: ['ext-markers.js','ext-connector.js', 'ext-eyedropper.js'],
+				extPath: '/FloorPlan/static/js/svg-edit/extensions/',
+				extensions: [],
 				initTool: 'select',
 				wireframe: false
 			},
@@ -3328,11 +3328,11 @@
 								
 								// Put shortcut in title
 								if(opts.sel && !opts.hidekey) {
-									var new_title = btn.attr('title').split('[')[0] + '[' + keyval + ']';
+									var new_title = btn.prop('title').split('[')[0] + '[' + keyval + ']';
 									key_assocs[keyval] = opts.sel;
 									// Disregard for menu items
 									if(!btn.parents('#main_menu').length) {
-										btn.attr('title', new_title);
+										btn.prop('title', new_title);
 									}
 								}
 							}
@@ -3717,8 +3717,10 @@
 
 // ?iconsize=s&bkgd_color=555
 
-// svgEditor.setConfig({
-// // 	imgPath: 'foo',
+ svgEditor.setConfig({
+  	imgPath: '/FloorPlan/static/js/svg-edit/images/',
+	langPath: 'locale/',
+	extPath: '/FloorPlan/static/js/svg-edit/extensions/',
 // 	dimensions: [800, 600],
 // 	canvas_expansion: 5,
 // 	initStroke: {
@@ -3731,4 +3733,5 @@
 // 		opacity: .75
 // 	},
 // 	extensions: ['ext-helloworld.js']
-// })
+ })
+ 

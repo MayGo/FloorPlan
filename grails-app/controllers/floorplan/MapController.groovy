@@ -13,6 +13,9 @@ class MapController {
 
 	def index() {
 	}
+	def editor() {
+	}
+
 
 	def get() {
 		def roomInstance = Room.findByNr(params.int('id'))
