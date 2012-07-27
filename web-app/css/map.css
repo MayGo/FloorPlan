@@ -21,27 +21,25 @@
 	
 }
 
-.floor {
-	z-index:1;
-	border: 1px solid #FFF;
+.floor{
+	z-index:0;
+	/*border: 1px solid #FFF;
 	border-bottom: 4px solid #FFF;
 	border-top: 4px solid #FFF;
-	background: #000;
-	position: absolute;
+	background: #000;*/
+
 	
-	transform : skew( 50deg, 0deg) scale( 1, 0.1);
-	-ms-transform: skew(50deg, 0deg) scale(1, 0.1); /* IE 9 */
-	-webkit-transform: skew(50deg, 0deg) scale(1, 0.1);
+	/*transform : skew( 50deg, 0deg) scale( 1, 0.1);
+	-ms-transform: skew(50deg, 0deg) scale(1, 0.1); *//* IE 9 */
+	/*-webkit-transform: skew(50deg, 0deg) scale(1, 0.1);*/
 	/* Safari and Chrome */
-	-o-transform: skew(50deg, 0deg) scale(1, 0.1); /* Opera */
-	-moz-transform: skew(50deg, 0deg) scale(1, 0.1);
-	transform: skew(50deg, 0deg) scale(1, 0.1);
+	/*-o-transform: skew(50deg, 0deg) scale(1, 0.1);*/ /* Opera */
+	/*-moz-transform: skew(50deg, 0deg) scale(1, 0.1);
+	transform: skew(50deg, 0deg) scale(1, 0.1);*/
 
 }
 
-.shadow_1 {
-filter:url(#myGaussianBlur); 
-}
+
 
 #content { /*  position: absolute;*/
 	

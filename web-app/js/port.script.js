@@ -11,9 +11,6 @@
 			$(this).data("settings", options);
 			// $(this).bind("click", methods.myOtherFunction);
 			this.svg();
-
-			
-
 		},
 		colorRooms : function(rooms) {
 			var $this = $(this);
@@ -38,6 +35,46 @@
 		deColorRooms : function() {
 			$("g *").removeClass("activeRoom");
 		},
+		animate : function() {
+			var scaleFactor=0.2;
+			$(this).children(":first-child").children("g").animate({
+				svgTransform : 'skewX(50) scale(1, '+scaleFactor+')'
+			}, 0);
+			
+			var h=$(this).data("settings").h;
+			var w=$(this).data("settings").w;
+			$(this).svg('get').configure({height: h*scaleFactor, width:w}, true);
+			
+			methods.addNumbers()
+		},
+		deAnimate : function() {
+			
+			$(this).children(":first-child").children("g").animate({
+				svgTransform : ''
+			}, 0);
+			var h=$(this).data("settings").h;
+			var w=$(this).data("settings").w;
+			$(this).svg('get').configure({height: h, width:w}, true);
+			
+			methods.addNumbers()
+		},
+		addNumbers : function() {
+			$('#floors').children("span").remove();
+			jQuery.each($("#ruuminr g"), function(i, val) {
+
+				cutUid = val.id.match(/[\d\.]+/g);
+				sp = $(
+						'<span class="label label-info">' + cutUid
+								+ '</span>').appendTo('#floors');
+				sp.offset($(val).offset());
+				// console.log($(val).offset());
+
+				$('.p_' + val.id).click(function() {
+					$($(this).attr("parentId")).trigger("click");
+				});
+
+			});
+		},
 		// myOtherFunction : function() {
 		// // alert($(this).data("settings").activeRoom);
 		// },
@@ -49,25 +86,12 @@
 			allDoneLoading = function() {// gives rooms all nessesary
 				// functionality
 				console.log("allDoneLoadingFloors");
-				jQuery.each($("#ruuminr g"), function(i, val) {
-
-					cutUid = val.id.match(/[\d\.]+/g);
-					sp = $(
-							'<span class="label label-info">' + cutUid
-									+ '</span>').appendTo('#floors');
-					sp.offset($(val).offset());
-					// console.log($(val).offset());
-
-					$('.p_' + val.id).click(function() {
-						$($(this).attr("parentId")).trigger("click");
-					});
-
-				});
+				methods.addNumbers()
 				$("#ruuminr g").hover(function() {
-					//$(this).children(":first-child").addClass("shadow_1");
+					// $(this).children(":first-child").addClass("shadow_1");
 					$(this).attr('filter', 'url(#myGlowFilter)');
 				}, function() {
-					//$(this).children(":first-child").removeClass("shadow_1");
+					// $(this).children(":first-child").removeClass("shadow_1");
 					$(this).attr('filter', '');
 				});
 				$("#ruuminr g").click(function() {
@@ -76,6 +100,10 @@
 					methods.colorRoom($this, this)
 					gotoMapUrl(this.id);
 				})
+				//$(this).svg('get').configure({viewBox: '0 0 1000 731.25'}, true);
+				
+				$(this).data("settings").h=parseInt($(this).children(":first-child").attr('height'));
+				$(this).data("settings").w=parseInt($(this).children(":first-child").attr('width'));
 			}
 			this.svg('get').load(map, {
 				changeSize : true,
@@ -124,6 +152,8 @@
 	$.fn.Floor.defaults = {
 		prevRoom : null,
 		activeRoom : null,
-		roomPrefix : "room"
+		roomPrefix : "room",
+		w:null,
+		h:null
 	};
 })(jQuery);
