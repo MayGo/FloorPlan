@@ -37,13 +37,13 @@ scaffoldingModule.config([
     function($routeProvider) {
         var baseUrl = $('body').data('template-url');
         $routeProvider.
-            when('/create', {templateUrl: baseUrl + '/create.html', controller: CreateCtrl}).
-            when('/edit/:id', {templateUrl: baseUrl + '/edit.html', controller: EditCtrl}).
-            when('/list', {templateUrl: baseUrl + '/list.html', controller: ListCtrl}).
-            when('/show/:id', {templateUrl: baseUrl + '/show.html', controller: ShowCtrl}).
-            when('/category/:id', {templateUrl: baseUrl + '/colorRooms.html',controller: CategoryCtrl}).    
-            when('/paytype/:id', {templateUrl: baseUrl + '/colorRooms.html',controller: PaytypeCtrl}). 
-            when('/trademark/:id', {templateUrl: baseUrl + '/colorRooms.html',controller: TrademarkCtrl}). 
+            when('/create', {templateUrl: baseUrl + '/create', controller: CreateCtrl}).
+            when('/edit/:id', {templateUrl: baseUrl + '/edit', controller: EditCtrl}).
+            when('/list', {templateUrl: baseUrl + '/list', controller: ListCtrl}).
+            when('/show/:id', {templateUrl: baseUrl + '/show', controller: ShowCtrl}).
+            when('/category/:id', {templateUrl: baseUrl + '/colorRooms',controller: CategoryCtrl}).    
+            when('/paytype/:id', {templateUrl: baseUrl + '/colorRooms',controller: PaytypeCtrl}). 
+            when('/trademark/:id', {templateUrl: baseUrl + '/colorRooms',controller: TrademarkCtrl}). 
             otherwise({redirectTo: '/list'});
     }
 ]);
@@ -166,7 +166,10 @@ function CategoryCtrl($scope, $routeParams, $location, Grails, Flash) {
     Grails.category({id: $routeParams.id}, function(item) {
         $scope.item = item;
  
-        $('#floors').Floor("colorRooms",  $scope.item.categories );
+       // $('#floors').Floor("colorRooms",  $scope.item.categories );
+        $(".floor").each(function(index) {
+        	$(this).Floor("colorRooms",  $scope.item.categories );
+		});
     }, errorHandler.curry($scope, $location, Flash));
 
     console.log("Categories:");  
@@ -178,7 +181,10 @@ function PaytypeCtrl($scope, $routeParams, $location, Grails, Flash) {
     Grails.category({id: $routeParams.id}, function(item) {
         $scope.item = item;
  
-        $('#floors').Floor("colorRooms",  $scope.item.categories );
+        //$('#floors').Floor("colorRooms",  $scope.item.categories );
+        $(".floor").each(function(index) {
+        	$(this).Floor("colorRooms",  $scope.item.categories );
+		});
     }, errorHandler.curry($scope, $location, Flash));
 
     console.log("Paytypes:");  
@@ -190,7 +196,10 @@ function TrademarkCtrl($scope, $routeParams, $location, Grails, Flash) {
     Grails.category({id: $routeParams.id}, function(item) {
         $scope.item = item;
  
-        $('#floors').Floor("colorRooms",  $scope.item.categories );
+       // $('#floors').Floor("colorRooms",  $scope.item.categories );
+        $(".floor").each(function(index) {
+        	$(this).Floor("colorRooms",  $scope.item.categories );
+		});
     }, errorHandler.curry($scope, $location, Flash));
 
     console.log("Trademark:");  
