@@ -9,11 +9,15 @@ class MapController {
 	static final int SC_UNPROCESSABLE_ENTITY = 422
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-	def taxonomyService
+	
 
 	def index() {
 	}
 	def editor() {
+		def floorId=params.floorId
+		Floor floor=Floor.get(floorId)
+		if(!floor)println "error, no floor"
+		[rooms:Room.list(), source:'<?xml version="1.0"?><svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">'+floor?.svg+"</svg>"]
 	}
 
 

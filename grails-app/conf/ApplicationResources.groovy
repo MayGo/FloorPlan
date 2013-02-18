@@ -62,12 +62,18 @@ modules = {
 		resource url:'/js/svg-edit/jgraduate/jpicker-1.0.12.min.js'
 		//resource url:'/js/svg-edit/extensions/ext-markers.js', exclude:'bundle'
 		//resource url:'/js/svg-edit/extensions/ext-connector.js', exclude:'bundle'
-		//resource url:'/js/svg-edit/extensions/ext-eyedropper.js', exclude:'bundle'
+		resource url:'/js/svg-edit/extensions/ext-roomselector.js', exclude:'bundle'
+		resource url:'/js/svg-edit/extensions/ext-server_opensave.js.gsp', exclude:'bundle'
+		
 		
 		resource url:'/js/svg-edit/images/svg_edit_icons.svg',nohashandcache: true, exclude:"*", attrs:[type:'css']
 
+		
+		resource url:'/js/jquery.autocomplete/jquery.autocomplete.js'
+		resource url:'/js/jquery.autocomplete/styles.css'
+		resource url:'/js/jquery.autocomplete/shadow.png'
 		//getFilesForPath('/js/svg-edit/').each { resource url: it }
-
+		//resource url:'/js/changepolling.joelpurra.js'
 	}
 
 }

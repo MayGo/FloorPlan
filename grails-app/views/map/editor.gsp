@@ -11,8 +11,23 @@
 </head>
 
 <body>
-
+<script type="text/javascript">
+			$(function() {
+				
+				$('#room_id').change(function() {
+					var v=$(this).val();
+					if(v){
+						$('#elem_id').val("room_"+$(this).val());
+						$('#elem_id').trigger('change')
+					}
+					
+				});
+				svgEditor.loadFromDataURI("${source}");
+				
+			});
+		</script>
 <div>
+
 <div id="svg_editor" >
 
 <div id="workarea">
@@ -131,6 +146,11 @@
 			<label id="idLabel" title="Identify the element">
 				<span>id:</span>
 				<input id="elem_id" class="attr_changer" data-attr="id" size="10" type="text"/>
+				<g:select name="room_id" id="room_id"
+				noSelection="['':'-']"
+          from="${rooms}"
+          
+          optionKey="id" />
 			</label>
 		</div>
 

@@ -10,7 +10,8 @@
 svgEditor.addExtension("server_opensave", {
 	callback: function() {
 
-		var save_svg_action = 'extensions/filesave.php';
+		var save_svg_action = '${g.createLink(controller:"floor",action: "savefile")}';
+
 		var save_png_action = 'extensions/filesave.php';
 	
 		// Create upload target (hidden iframe)
@@ -23,14 +24,15 @@ svgEditor.addExtension("server_opensave", {
 				var title = svgCanvas.getDocumentTitle();
 				var filename = title.replace(/[^a-z0-9\.\_\-]+/gi, '_');
 				
-				var form = $('<form>').attr({
-					method: 'post',
-					action: save_svg_action,
-					target: 'output_frame'
-				})	.append('<input type="hidden" name="output_svg" value="' + encodeURI(svg) + '">')
-					.append('<input type="hidden" name="filename" value="' + filename + '">')
-					.appendTo('body')
-					.submit().remove();
+			
+				$.ajax({
+				  type: "POST",
+				  url: save_svg_action,
+				  data: { filename: filename, output_svg: svg}
+				}).done(function( msg ) {
+				  alert( "Data Saved: " + msg );
+				});
+										
 			},
 			pngsave: function(win, data) {
 				var issues = data.issues;

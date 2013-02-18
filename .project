@@ -26,7 +26,7 @@
 		<link>
 			<name>.link_to_grails_plugins</name>
 			<type>2</type>
-			<locationURI>GRAILS_ROOT/2.0.4/projects/FloorPlan/plugins</locationURI>
+			<location>C:/Users/MayGo/.grails/2.1.0/projects/FloorPlan/plugins</location>
 		</link>
 	</linkedResources>
 </projectDescription>

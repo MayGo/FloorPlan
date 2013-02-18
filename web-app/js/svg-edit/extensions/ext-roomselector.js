@@ -1,24 +1,19 @@
-/*
- * ext-helloworld.js
- *
- * Licensed under the Apache License, Version 2
- *
- * Copyright(c) 2010 Alexis Deveria
- *
- */
- 
-/* 
-	This is a very basic SVG-Edit extension. It adds a "Hello World" button in
-	the left panel. Clicking on the button, and then the canvas will show the
- 	user the point on the canvas that was clicked on.
-*/
- 
+
 svgEditor.addExtension("Room Selector", function() {
-
+	
 		return {
+/*			context_tools: [{
+				type: "input",
+				panel: "selected_panel",
+				title: "Select Room",
+				label:"",
+				id: "room_id",
+				defval: "none",
+				events: {
+					change:  function() { alert('Option was changed') } 
+				}
+			}],*/
 			name: "Room Selector",
-
-			
 			selectedChanged: function(opts) {
 				// Use this to update the current selected elements
 				selElems = opts.elems;
@@ -33,7 +28,7 @@ svgEditor.addExtension("Room Selector", function() {
 						console.log("Changing..");
 						var v=elem.id;
 						if(v){
-							var v2=v.replace(/[^0-9\\.]/g, '')
+							var v2=v.replace(/room_/g, '')
 							if(v2){
 								$('#room_id').val(v2);
 								console.log(".. changed: "+v2);
